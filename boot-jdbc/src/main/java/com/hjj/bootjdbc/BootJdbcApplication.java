@@ -27,9 +27,11 @@ public class BootJdbcApplication implements CommandLineRunner {
     }
 
     private void showConnection() {
-        log.error(dataSource.toString());
         try {
             Connection connection = dataSource.getConnection();
+
+            // 之前调用会为空
+            log.error(dataSource.toString());
             log.error(connection.toString());
             connection.close();
         } catch (SQLException e) {
